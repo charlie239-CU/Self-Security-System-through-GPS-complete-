@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".MenuFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_top_bg2"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/courage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="43dp"
+                android:text="@string/courage" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/gps"
+                android:layout_width="108dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_gps"
+
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="189dp"
+                android:layout_marginRight="11dp"
+                android:background="@drawable/ic_exit"
+
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="176dp"
+
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:id="@+id/info_box"
+            android:orientation="vertical"
+            android:background="@drawable/info_box"
+           >
+
+            <TextView
+                android:id="@+id/total_activ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="87dp"
+                android:layout_marginTop="25dp"
+
+                android:gravity="top"
+                android:text="@string/total_activ"
+                android:textAppearance="@style/total_activ"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/users"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="129dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/users"
+                android:textAppearance="@style/users"
+                android:gravity="top"
+                />
+            <TextView
+                android:id="@+id/users_in_ra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="66dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="9dp"
+                android:text="@string/users_in_ra"
+                android:textAppearance="@style/users_in_ra"
+                android:textStyle="bold"
+                android:gravity="top"
+                />
+
+            <TextView
+                android:id="@+id/inRangeUsers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="137dp"
+                android:layout_marginTop="10dp"
+                android:gravity="top"
+                android:text="@string/users"
+                android:textAppearance="@style/users" />
+        </LinearLayout>
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_sos"
+        android:id="@+id/sosButton"
+        android:layout_gravity="center"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/location_ko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="59dp"
+        android:textStyle="bold"
+        android:text="@string/location_ko"
+        android:textAppearance="@style/location_ko"
+
+        />
+    <TextView
+        android:id="@+id/nearest_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
+        android:layout_gravity="center"
+        android:text="@string/nearest_use"
+        android:textStyle="bold"
+        android:textAppearance="@style/nearest_use"
+        android:gravity="top"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       android:layout_alignParentBottom="true"
+
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="40dp"
+                android:layout_height="43dp"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                android:background="@drawable/ic_location"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="40dp"
+                android:layout_height="43dp"
+                android:id="@+id/nav_contact_button"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                android:background="@drawable/ic_contact_icon" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="40dp"
+                android:layout_height="43dp"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                android:background="@drawable/ic_chat"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="40dp"
+                android:layout_height="43dp"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                android:background="@drawable/ic_profile" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
