@@ -50,7 +50,7 @@
                 android:layout_marginLeft="189dp"
                 android:layout_marginRight="11dp"
                 android:background="@drawable/ic_exit"
-
+                android:id="@+id/logout"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </LinearLayout>
 
@@ -78,7 +78,7 @@
                 android:textAppearance="@style/total_activ"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/users"
+                android:id="@+id/totalusers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -124,25 +124,14 @@
         android:layout_gravity="center"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
         android:layout_marginTop="16dp"/>
-    <TextView
-        android:id="@+id/location_ko"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="59dp"
-        android:textStyle="bold"
-        android:text="@string/location_ko"
-        android:textAppearance="@style/location_ko"
 
-        />
     <TextView
-        android:id="@+id/nearest_use"
+        android:id="@+id/nearest_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="72dp"
         android:layout_gravity="center"
         android:text="@string/nearest_use"
         android:textStyle="bold"
@@ -174,6 +163,7 @@
                 android:layout_width="40dp"
                 android:layout_height="43dp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                android:id="@+id/mapButton"
                 android:background="@drawable/ic_location"
                 />
         </LinearLayout>

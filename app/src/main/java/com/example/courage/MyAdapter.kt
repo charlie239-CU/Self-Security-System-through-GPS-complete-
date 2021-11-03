@@ -13,13 +13,11 @@ internal class MyAdapter (
 FragmentPagerAdapter(fm){
     override fun getItem(position: Int): Fragment {
         return when(position){
+
             0->{
-               MapsFragment()
-            }
-            1->{
                 MenuFragment()
             }
-            2->{
+            1->{
                 ProfileFragment()
             }
             else ->getItem(position)

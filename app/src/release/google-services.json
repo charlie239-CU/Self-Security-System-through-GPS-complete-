@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "122498544482",
+    "project_id": "courage-4591a",
+    "storage_bucket": "courage-4591a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122498544482:android:f24a7d56106bbfc825723b",
+        "android_client_info": {
+          "package_name": "com.example.courage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122498544482-ucnueqm3rptb7thk98gn11b3g8939745.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDkzPuEr3WzEocVotzwVR0HJwxvVYYPA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122498544482-ucnueqm3rptb7thk98gn11b3g8939745.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

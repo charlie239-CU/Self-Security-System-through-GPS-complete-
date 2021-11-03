@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.courage">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -15,9 +21,7 @@
         android:roundIcon="@drawable/ic_logo_svg"
         android:supportsRtl="true"
         android:theme="@style/Theme.Courage">
-        <activity
-            android:name=".Contact"
-            android:exported="true" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,9 +35,29 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".AfterSplash"
+            android:name=".DemoMap"
             android:exported="true"
-            android:label="@string/title_activity_after_splash"
+            android:label="@string/title_activity_demo_map" />
+        <activity
+            android:name=".FillContact"
+            android:exported="true" />
+        <activity
+            android:name=".singup"
+            android:exported="true" />
+        <activity
+            android:name=".AfterSplash"
+            android:exported="true" />
+        <activity
+            android:name=".MapsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".Contact"
+            android:exported="true" />
+        <activity
+            android:name=".Login"
+            android:exported="true"
+            android:label="@string/login"
             android:theme="@style/Theme.Courage.NoActionBar" />
         <activity
             android:name=".MainActivity"

@@ -1,3 +1,6 @@
-Menu Top bg more height
-sort the vaccant space
-start implementation of other layout
+**sign up completed add other data
+**implement login
+**manage firebase database of user.
+validation of fields in login and sign using emptymethod
+**add map in latitude and longitude to firebase in signup
+checkout splash program

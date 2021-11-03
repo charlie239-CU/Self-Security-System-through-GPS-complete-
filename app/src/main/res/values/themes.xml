@@ -23,7 +23,7 @@
 
     <style name="Theme.Courage.PopupOverlay" parent="Theme.Courage.NoActionBar" />
 
-<!--    Custom Styles-->
+    <!--    Custom Styles-->
     <style name="courage">
         <item name="android:textSize">
             24sp
@@ -32,6 +32,7 @@
             #FFFFFF
         </item>
     </style>
+
     <style name="total_activ">
 
         <item name="android:textSize">
@@ -43,6 +44,7 @@
         </item>
 
     </style>
+
     <style name="users">
 
         <item name="android:textSize">
@@ -54,6 +56,7 @@
         </item>
 
     </style>
+
     <style name="users_in_ra">
 
         <item name="android:textSize">
@@ -65,28 +68,27 @@
         </item>
 
     </style>
+
     <style name="location_ko">
 
         <item name="android:textSize">
             18sp
         </item>
 
-        <item name="android:textColor">
-            #000000
-        </item>
+        <item name="android:textColor">#FFFCFC</item>
 
     </style>
+
     <style name="nearest_use">
 
         <item name="android:textSize">
             18sp
         </item>
 
-        <item name="android:textColor">
-            #000000
-        </item>
+        <item name="android:textColor">#FFFFFF</item>
 
     </style>
+
     <style name="contacts">
 
         <item name="android:textSize">
@@ -98,6 +100,7 @@
         </item>
 
     </style>
+
     <style name="vivek_rawat">
 
         <item name="android:textSize">
@@ -109,6 +112,7 @@
         </item>
 
     </style>
+
     <style name="contact_1">
 
         <item name="android:textSize">
@@ -120,6 +124,7 @@
         </item>
 
     </style>
+
     <style name="verified">
 
         <item name="android:textSize">
@@ -131,6 +136,7 @@
         </item>
 
     </style>
+
     <style name="contact_details">
 
         <item name="android:textSize">
@@ -147,6 +153,7 @@
             300
         </item>
     </style>
+
     <style name="edit">
 
         <item name="android:textSize">
@@ -158,6 +165,7 @@
         </item>
 
     </style>
+
     <style name="profile_name">
 
         <item name="android:textSize">
@@ -172,6 +180,7 @@
         </item>
 
     </style>
+
     <style name="profile_detail">
 
         <item name="android:textSize">
@@ -186,6 +195,7 @@
             300
         </item>
     </style>
+
     <style name="profile_heading">
 
         <item name="android:textSize">
@@ -200,6 +210,7 @@
             200
         </item>
     </style>
+
     <style name="click_here">
 
         <item name="android:textSize">
