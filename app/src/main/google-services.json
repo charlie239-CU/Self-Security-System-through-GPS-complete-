@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "122498544482",
-    "project_id": "courage-4591a",
-    "storage_bucket": "courage-4591a.appspot.com"
+    "project_number": "629800407740",
+    "project_id": "fir-experiment-e5323",
+    "storage_bucket": "fir-experiment-e5323.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:122498544482:android:f24a7d56106bbfc825723b",
+        "mobilesdk_app_id": "1:629800407740:android:dd5c97b1e7a0978fb876b9",
         "android_client_info": {
-          "package_name": "com.example.courage"
+          "package_name": "com.example.firebaseexpirement"
         }
       },
       "oauth_client": [
         {
-          "client_id": "122498544482-ucnueqm3rptb7thk98gn11b3g8939745.apps.googleusercontent.com",
+          "client_id": "629800407740-c50ru6bilr44ndljq31lnjiaci8oeasr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebaseexpirement",
+            "certificate_hash": "4c2cc0d55622eb11f0d6b5304e02019acc2e0bd7"
+          }
+        },
+        {
+          "client_id": "629800407740-i3mrug4ck25n16meansjk9gv24iecb6d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDDkzPuEr3WzEocVotzwVR0HJwxvVYYPA8"
+          "current_key": "AIzaSyABwiZGSuE5mR9p7xBgayexstTqd4vKmt4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "122498544482-ucnueqm3rptb7thk98gn11b3g8939745.apps.googleusercontent.com",
+              "client_id": "629800407740-i3mrug4ck25n16meansjk9gv24iecb6d.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

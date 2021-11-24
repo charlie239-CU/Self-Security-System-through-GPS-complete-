@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@color/white"
     tools:context=".MenuFragment">
 
     <LinearLayout
@@ -14,53 +14,13 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_top_bg2"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/courage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="43dp"
-                android:text="@string/courage" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/gps"
-                android:layout_width="108dp"
-                android:layout_height="24dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="15dp"
-                android:background="@drawable/ic_gps"
-
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="189dp"
-                android:layout_marginRight="11dp"
-                android:background="@drawable/ic_exit"
-                android:id="@+id/logout"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="330dp"
             android:layout_height="176dp"
 
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="60dp"
             android:id="@+id/info_box"
+
             android:orientation="vertical"
             android:background="@drawable/info_box"
            >
@@ -116,14 +76,18 @@
                 android:textAppearance="@style/users" />
         </LinearLayout>
     </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_sos"
         android:id="@+id/sosButton"
+        android:layout_width="219dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_height="77dp"
         android:layout_gravity="center"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
-        android:layout_marginTop="16dp"/>
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_sos"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/nearest_user"
@@ -131,13 +95,71 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:text="@string/nearest_use"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:textAppearance="@style/nearest_use"
         android:gravity="top"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/description"
+        android:paddingHorizontal="50dp"
+        android:text="Apart from contacts request also Sent to users who are available and near to you"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="#756F6F"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:paddingVertical="10dp"
+        android:id="@+id/headerForLogs"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="Distance"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="187dp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -145,75 +167,78 @@
         >
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-       android:layout_alignParentBottom="true"
+        <LinearLayout
 
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
             android:gravity="center"
-            android:layout_weight="1"
-            >
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="40dp"
-                android:layout_height="43dp"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
-                android:id="@+id/mapButton"
-                android:background="@drawable/ic_location"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="1"
+
             >
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="40dp"
-                android:layout_height="43dp"
-                android:id="@+id/nav_contact_button"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
-                android:background="@drawable/ic_contact_icon" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/mapButton"
+                    android:layout_width="28dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_height="33dp"
+                    android:background="@drawable/ic_location"
+                    android:backgroundTint="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nav_contact_button"
+                    android:layout_width="30dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_height="33dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/ic_contact_icon"
+                    android:backgroundTint="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nav_message_button"
+                    android:layout_width="32dp"
+                    android:layout_height="33dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:focusable="true"
+                    android:background="@drawable/ic_baseline_notifications_active_24"
+                    android:backgroundTint="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            </LinearLayout>
+
+
+
+
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="1"
-            >
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="40dp"
-                android:layout_height="43dp"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
-                android:background="@drawable/ic_chat"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="1"
-            >
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="40dp"
-                android:layout_height="43dp"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
-                android:background="@drawable/ic_profile" />
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
     </RelativeLayout>
+
 </LinearLayout>

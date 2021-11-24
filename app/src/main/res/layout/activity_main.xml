@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".MainActivity"
-    android:background="@color/bg_color_splash"
+    android:background="#FFFFFF"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,18 +20,19 @@
             android:src="@drawable/ic_logo"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/todo" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="123dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:orientation="horizontal">
-            <ProgressBar
-                android:layout_width="wrap_content"
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/progressBarStyleLarge"
-                android:id="@+id/progressbar"
-                />
+                android:indeterminate="true" />
+            />
         </LinearLayout>
     </LinearLayout>
 

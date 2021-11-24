@@ -17,6 +17,8 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -40,10 +43,13 @@ class MainActivity : AppCompatActivity() {
         database= FirebaseDatabase.getInstance("https://courage-4591a-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference()
         val user=auth.currentUser
         if(user!=null) {
+            startService(Intent(this,NotifyService::class.java))
             user?.let {
                 username = user.displayName.toString()
+                Helper.usernameCurrent=username
                 email = user.email.toString()
             }
+
             val userDataHandler = object : Helper.Companion.UserDataInterface {
                 override fun onResult(result: User) {
 
@@ -64,43 +70,54 @@ class MainActivity : AppCompatActivity() {
 
                     }
                     else {
-                        if(sharedPreference.getString("operation","")!="true") {
-                            databaseHandler.deleteAllData()
-                            Log.d("contacts",Helper.userData.contacts.toString())
-                            if(Helper.userData.contacts.toString()!="null"){
+                        if (Helper.userData.flag.toString() == "false") {
+                            val intent=Intent(this@MainActivity,UpdateProfile::class.java)
+                            startActivity(intent)
 
-                            val data = Helper.userData.contacts as Map<String, Map<String, String>>
-                            for ((k, v) in data) {
-                                Log.d("size", data.size.toString())
+                        } else {
+                            Helper.getPersonalData(database,username)
+                            if (sharedPreference.getString("operation", "") != "true") {
+                                databaseHandler.deleteAllData()
+                                Log.d("contacts", Helper.userData.contacts.toString())
+                                if (Helper.userData.contacts.toString() != "null") {
 
-                                var list = ContactStructure(
-                                    name = v["name"].toString(),
-                                    email = v["email"].toString(),
-                                    address = v["address"].toString(),
-                                    phone = v["phone"].toString()
+                                    val data =
+                                        Helper.userData.contacts as Map<String, Map<String, String>>
+                                    for ((k, v) in data) {
+                                        Log.d("size", data.size.toString())
 
-                                )
-                                Log.d("checking", list.email.toString())
-                                val status = databaseHandler.addContact(list)
-                                if (status < 0) {
-                                    Toast.makeText(
-                                        applicationContext, "Error in sqlLite",
-                                        Toast.LENGTH_LONG
-                                    ).show()
+                                        var list = ContactStructure(
+                                            name = v["name"].toString(),
+                                            email = v["email"].toString(),
+                                            address = v["address"].toString(),
+                                            phone = v["phone"].toString()
+
+                                        )
+                                        Log.d("checking", list.email.toString())
+                                        val status = databaseHandler.addContact(list)
+                                        if (status < 0) {
+                                            Toast.makeText(
+                                                applicationContext, "Error in sqlLite",
+                                                Toast.LENGTH_LONG
+                                            ).show()
+                                        }
+                                    }
                                 }
-                            }
-                            }
 
-                            var editor = sharedPreference.edit()
-                            editor.putString("operation", "true")
-                            editor.commit()
+                                var editor = sharedPreference.edit()
+                                editor.putString("operation", "true")
+                                editor.commit()
+                            }
+                            Handler().postDelayed({
+                                val intent = Intent(activity, AfterSplash::class.java)
+                                startActivity(intent)
+                                finish()
+                                return@postDelayed
+                            }, 5000)
                         }
+
                     }
-                    Handler().postDelayed({
-                        val intent = Intent(activity, AfterSplash::class.java)
-                        startActivity(intent)
-                        finish()
-                    }, 5000)
+
                 }
 
                 override fun onError(error: String) {
@@ -111,6 +128,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onResult(result: List<String>) {
                     Helper.usernameList = result
                     Log.d("userlist", "1")
+
                     Helper.getUserDataInList(database, userListHandler)
                 }
 
@@ -126,7 +144,9 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(activity, Login::class.java)
                 startActivity(intent)
                 finish()
+                return@postDelayed
             }, 5000)
+
         }
 
 

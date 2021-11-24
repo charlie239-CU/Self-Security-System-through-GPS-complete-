@@ -20,18 +20,6 @@
             android:textAppearance="@style/contact_1"
 
             />
-        <TextView
-            android:id="@+id/verified"
-            android:layout_width="36dp"
-            android:layout_height="14dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="72dp"
-            android:layout_alignParentTop="true"
-
-            android:text="@string/verified"
-            android:textAppearance="@style/verified"
-            android:gravity="top"
-            />
 
     </LinearLayout>
     <LinearLayout

@@ -1,21 +1,30 @@
 package com.example.courage
 
-import android.app.Activity
+import android.app.*
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
 import android.widget.*
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.LocationSettingsResponse
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class Login : AppCompatActivity() {
@@ -24,12 +33,15 @@ class Login : AppCompatActivity() {
     lateinit var loginButton:Button
     lateinit var signUpButton: TextView
     private lateinit var database: DatabaseReference
+    private lateinit var dbForNotification: DatabaseReference
     lateinit var logo:ImageView
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
+
         emailField=findViewById(R.id.email)
         passField=findViewById(R.id.password)
         loginButton=findViewById(R.id.login)
@@ -37,8 +49,21 @@ class Login : AppCompatActivity() {
         database = Firebase.database.reference
         logo=findViewById(R.id.logo)
         auth = Firebase.auth
-        Helper.createLocationRequest(this)
+
+        val handler = object:Helper.Companion.LocationCheckInterface{
+            override fun onResult(result: Boolean) {
+                //super.onResult(result)
+                Helper.makeToast(this@Login,result.toString()).show()
+            }
+
+            override fun onError(error: String) {
+
+            }
+        }
         database= FirebaseDatabase.getInstance("https://courage-4591a-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference()
+
+
+        Helper.locationRequestWithResult(this,handler)
 
         val currentUser = auth.currentUser
         if(currentUser != null){
@@ -47,6 +72,8 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
         loginButton.setOnClickListener {
+
+
             val email:String=emailField.text.toString()
             val password:String=passField.text.toString()
             if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
@@ -61,22 +88,6 @@ class Login : AppCompatActivity() {
                         Toast.makeText(baseContext, "Successfull login.",
                             Toast.LENGTH_SHORT).show()
                         val user = auth.currentUser
-                        user?.let {
-                            // Name, email address, and profile photo Url
-                            val name = user.displayName
-                            val email = user.email
-                            val photoUrl = user.photoUrl
-
-                            // Check if user's email is verified
-                            val emailVerified = user.isEmailVerified
-
-                            // The user's ID, unique to the Firebase project. Do NOT use this value to
-                            // authenticate with your backend server, if you have one. Use
-                            // FirebaseUser.getToken() instead.
-                            val uid = user.uid
-//                            Toast.makeText(baseContext, name.toString(),
-//                                Toast.LENGTH_SHORT).show()
-                        }
 
                         //Firebase.auth.signOut()
                         val intent=Intent(this,MainActivity::class.java)
@@ -96,4 +107,35 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    fun onLocationTask(task: Task<LocationSettingsResponse>){
+        task.addOnSuccessListener { locationSettingsResponse ->
+            Helper.makeToast(this,"wonderful").show()
+        }
+        task.addOnCanceledListener {
+            Helper.makeToast(this,"Kindly accept request").show()
+        }
+        if(task.isSuccessful){
+            Helper.makeToast(this,"wonderful").show()
+        }
+
+        task.addOnFailureListener { exception ->
+            if (exception is ResolvableApiException) {
+                // Location settings are not satisfied, but this can be fixed
+                // by showing the user a dialog.
+                try {
+
+                    exception.startResolutionForResult(
+                        this,
+                        Helper.REQUEST_CHECK_SETTINGS
+                    )
+
+                } catch (sendEx: IntentSender.SendIntentException) {
+                    // Ignore the error.
+                }
+            }
+        }
+    }
+
+
 }

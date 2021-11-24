@@ -21,7 +21,17 @@
         android:roundIcon="@drawable/ic_logo_svg"
         android:supportsRtl="true"
         android:theme="@style/Theme.Courage">
+        <service
+            android:name=".NotifyService"
+            android:enabled="true"
+            android:exported="true"></service>
 
+        <activity
+            android:name=".UpdateProfile"
+            android:exported="true" />
+        <activity
+            android:name=".InboxFragment"
+            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,10 +44,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".DemoMap"
-            android:exported="true"
-            android:label="@string/title_activity_demo_map" />
         <activity
             android:name=".FillContact"
             android:exported="true" />

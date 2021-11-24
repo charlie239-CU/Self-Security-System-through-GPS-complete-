@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:background="#F6F3F3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight=".5"
+
+        android:padding="5dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="User: Vivek"
+            android:textSize="16dp"
+            android:id="@+id/sosUser"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Time: 40min ago"
+            android:id="@+id/sosTime"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#5C5757"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="2dp"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+
+                android:padding="0dp"
+                android:textSize="10dp"
+                android:background="@drawable/ic_decline"
+                android:id="@+id/declineButton"
+
+                android:backgroundTint="#5C5757"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Decline"
+                android:textSize="12dp"
+                android:textColor="#5C5757"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:gravity="center"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/acceptButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:backgroundTint="#5C5757"
+                android:padding="0dp"
+                android:background="@drawable/ic_accept"
+                android:textColor="#5C5757"
+
+                android:textSize="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accept"
+                android:textSize="12dp"
+                android:textColor="#5C5757"
+
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

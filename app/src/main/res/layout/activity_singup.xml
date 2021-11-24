@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="#EEFFFFFF"
     android:padding="16dp"
     android:scrollbarThumbVertical="@null"
     tools:context=".singup">
@@ -17,21 +17,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         app:srcCompat="@drawable/ic_logo" />
-    <androidx.cardview.widget.CardView
-        xmlns:Card_View="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        Card_View:cardCornerRadius="5dp"
-        android:layout_centerInParent="true"
-        Card_View:cardElevation="5dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:layout_margin="5dp"
             android:orientation="vertical">
 
@@ -138,6 +129,9 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/button_gradient"
                 android:text="@string/register"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"/>
 
@@ -149,10 +143,13 @@
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:text="@string/not_register"
-                android:textColor="@color/colorPrimary"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="#3A3C3E"
                 android:textSize="16sp"/>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

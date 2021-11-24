@@ -20,6 +20,7 @@ FragmentPagerAdapter(fm){
             1->{
                 ProfileFragment()
             }
+
             else ->getItem(position)
         }
     }

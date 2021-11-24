@@ -39,11 +39,21 @@ public class Helper {
             fun onResult(result:MutableList<User>)
             fun onError(error: String)
         }
+
+        interface LocationCheckInterface{
+            fun onResult(result:Boolean){}
+            fun onError(error:String)
+        }
+        public var usernameCurrent:String=""
+        public var notificationListData:MutableList<NotificationStructure> = mutableListOf()
+        public var notificationHistoryListData:MutableList<NotificationStructure> = mutableListOf()
+        public var personalUserData:PersonalInfo?= PersonalInfo()
         public var userData:User=User()
         public var usernameList:List<String> = listOf()
         public var userList:MutableList<User> = mutableListOf()
-        protected val REQUEST_CHECK_SETTINGS = 0x1
+        public val REQUEST_CHECK_SETTINGS = 0x1
         public  var locationRequest:LocationRequest=LocationRequest()
+
         public fun createLocationRequest(activity: Activity) {
 
             locationRequest = LocationRequest.create()?.apply {
@@ -53,12 +63,20 @@ public class Helper {
             val builder = LocationSettingsRequest.Builder()
                 .addLocationRequest(locationRequest)
             val client: SettingsClient = LocationServices.getSettingsClient(activity)
+
             val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
             task.addOnSuccessListener { locationSettingsResponse ->
                 // All location settings are satisfied. The client can initialize
                 // location requests here.
-                // ...
+                // ...\
+               // locationHandler.onResult(locationSettingsResponse.locationSettingsStates.isGpsUsable)
+                //makeToast(activity,locationSettingsResponse.locationSettingsStates.isGpsUsable.toString()).show()
+
             }
+            if(task.isSuccessful){
+
+            }
+
 
             task.addOnFailureListener { exception ->
                 if (exception is ResolvableApiException) {
@@ -71,6 +89,53 @@ public class Helper {
                             activity,
                             REQUEST_CHECK_SETTINGS
                         )
+                       // locationHandler.onError("Error")
+                    } catch (sendEx: IntentSender.SendIntentException) {
+                        // Ignore the error.
+                    }
+                }
+            }
+        }
+
+        public fun locationRequestWithResult(activity: Activity,locationHandler:LocationCheckInterface) {
+
+            locationRequest = LocationRequest.create()?.apply {
+                interval = 1000
+                priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            }!!
+            val builder = LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest)
+            val client: SettingsClient = LocationServices.getSettingsClient(activity)
+            val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+            task.addOnSuccessListener { locationSettingsResponse ->
+                // All location settings are satisfied. The client can initialize
+                // location requests here.
+                // ...\
+                locationHandler.onResult(locationSettingsResponse.locationSettingsStates.isGpsUsable)
+                //makeToast(activity,locationSettingsResponse.locationSettingsStates.isGpsUsable.toString()).show()
+
+            }
+            task.addOnSuccessListener {
+                locationHandler.onResult(it.locationSettingsStates.isGpsUsable)
+            }
+
+            if(task.isSuccessful){
+
+            }
+
+
+            task.addOnFailureListener { exception ->
+                if (exception is ResolvableApiException) {
+                    // Location settings are not satisfied, but this can be fixed
+                    // by showing the user a dialog.
+                    try {
+                        // Show the dialog by calling startResolutionForResult(),
+                        // and check the result in onActivityResult().
+                        exception.startResolutionForResult(
+                            activity,
+                            REQUEST_CHECK_SETTINGS
+                        )
+                        locationHandler.onError("Error")
                     } catch (sendEx: IntentSender.SendIntentException) {
                         // Ignore the error.
                     }
@@ -152,6 +217,7 @@ public class Helper {
 
                 try {
                     val user:User=it.getValue<User>() as User
+                    if(user!=null)
                     userData=user
                     resultListener.onResult(user)
                 }
@@ -168,6 +234,7 @@ public class Helper {
 
                 try {
                     val td: Map<String, User> = it.value as Map<String, User>
+                    if(td!=null)
                     usernameList = ArrayList<String>(td.keys)
                     resultListener.onResult(usernameList)
                 }
@@ -186,9 +253,26 @@ public class Helper {
                 database.child("users").get().addOnSuccessListener {
 
                        val post=it.child(user).getValue<User>()
+                    if(post!=null)
                     userList.add(post!!)
                     resultListener.onResult(userList)
                 }
+            }
+
+        }
+        fun getPersonalData(database:DatabaseReference,username: String){
+            Log.d("userlist", "4")
+
+
+                database.child("personaldata").child(username).get().addOnSuccessListener {
+
+                    val d= it.getValue<PersonalInfo>()!!
+                    if(d!=null)
+                    personalUserData=d
+                    //Log.d("perosnal",it.getValue().toString())
+
+
+
             }
 
         }

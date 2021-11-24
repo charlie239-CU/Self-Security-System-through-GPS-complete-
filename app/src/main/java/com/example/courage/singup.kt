@@ -103,11 +103,11 @@ class singup : AppCompatActivity() {
                                     val profileUpdates: UserProfileChangeRequest =
                                         UserProfileChangeRequest.Builder().setDisplayName(username).build()
                                     user!!.updateProfile(profileUpdates);
-
-                                    Firebase.auth.signOut()
-
-                                    val intent= Intent(activity,Login::class.java)
+                                    val intent= Intent(activity,UpdateProfile::class.java)
+                                    intent.putExtra("username",username)
+                                    intent.putExtra("email",email)
                                     startActivity(intent)
+
                                 } else {
                                     // If sign in fails, display a message to the user.
 
@@ -226,7 +226,7 @@ class singup : AppCompatActivity() {
                         long= location!!.longitude.toString()
                         val mapLocation=mapOf<String,String>("lat" to lat,"long" to long)
                         val list= listOf<String>()
-                        val user = User(name, email,phone,mapLocation,list)
+                        val user = User(name, email,phone,mapLocation,list,"false",username)
                         database.child("users").child(username).setValue(user)
 
 

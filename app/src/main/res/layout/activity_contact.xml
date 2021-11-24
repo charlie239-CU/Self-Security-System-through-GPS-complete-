@@ -17,25 +17,15 @@
         android:gravity="center"
         android:layout_marginTop="55dp"
         >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.1"
-            >
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="48dp"
-                android:layout_height="43dp"
-                android:background="@drawable/ic_back"
-                android:id="@+id/back"
-                />
-        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="5"
+            android:layout_gravity="center"
+            android:gravity="center"
+
             >
             <TextView
                 android:id="@+id/contacts"
@@ -43,18 +33,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/contacts"
                 android:textAppearance="@style/contacts"
-                android:layout_marginLeft="82dp"
+
 
                 />
             <TextView
-                android:id="@+id/vivek_rawat"
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="92dp"
                 android:text="@string/vivek_rawat"
+                android:textAlignment="center"
                 android:textAppearance="@style/vivek_rawat"
-                android:gravity="top"
-                />
+                tools:ignore="RtlCompat" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -63,13 +52,16 @@
         android:orientation="vertical"
         android:layout_marginTop="68dp"
         >
+
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_addcontact"
             android:id="@+id/add_new_contact"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_addcontact" />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
